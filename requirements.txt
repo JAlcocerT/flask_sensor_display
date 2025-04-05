@@ -5,3 +5,11 @@ bme280==0.6
 smbus2==0.4.1
 
 python-dotenv==1.0.1
+
+#for SSE RT Updates
+Flask-SSE
+
+#for websockets
+Flask-SocketIO
+
+#pip3 install -r requirements.txt

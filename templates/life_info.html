@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Life Information</title>
+</head>
+<body>
+    <h1>Life Information</h1>
+    <p>Timestamp: <span id="timestamp"></span></p>
+    <p>Temperature: <span id="temperature"></span> °C</p>
+    <p>Fan Speed: <span id="fan2"></span> RPM</p>
+    <p>Power: <span id="ppt"></span> W</p>
+    <p><a href="{{ url_for('temperature') }}">Back to Temperature Chart</a></p>
+
+    <script>
+        const eventSource = new EventSource('/stream/events');
+
+        eventSource.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            console.log('Received SSE event:', data);
+
+            // Update the HTML elements with the new data
+            if (data.DATE) {
+                document.getElementById('timestamp').textContent = data.DATE;
+            }
+            if (data.TEMPERATURE) {
+                document.getElementById('temperature').textContent = data.TEMPERATURE;
+            }
+            if (data.fan2 !== undefined) {
+                document.getElementById('fan2').textContent = data.fan2;
+            }
+            if (data.ppt !== undefined) {
+                document.getElementById('ppt').textContent = data.ppt;
+            }
+        };
+
+        eventSource.onerror = function(error) {
+            console.error('SSE error:', error);
+            eventSource.close(); // Optionally close the connection on error
+        };
+    </script>
+</body>
+</html>
