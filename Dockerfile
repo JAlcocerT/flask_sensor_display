@@ -1,7 +1,7 @@
 FROM python:3.12.4-slim  
 #https://hub.docker.com/_/python
 
-LABEL org.opencontainers.image.source https://github.com/JAlcocerT/Streamlit-MultiChat
+LABEL org.opencontainers.image.source https://github.com/JAlcocerT/flask_sensor_display
 LABEL maintainer="Jesus Alcocer Tagua"
 LABEL org.opencontainers.image.description="Flask Sensor Web App"
 LABEL org.opencontainers.image.licenses=GPL-3.0

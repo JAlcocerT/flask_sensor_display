@@ -13,9 +13,10 @@ services:
     ports:
       - "9999:9999"
     restart: always
-    # environment:
-    #   MODEL_API_KEY: sk-proj-openaiAPIhere
-    #   MODEL: gpt-4o-mini      #gpt-4   
+    environment:
+      Platform: x300 #bme280 #pi4
+      MODEL_API_KEY: sk-proj-openaiAPIhere
+      MODEL: gpt-4o-mini      #gpt-4   
     # networks:
     #   - cloudflare_tunnel
       # - nginx_default   

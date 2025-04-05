@@ -59,7 +59,10 @@ I have adapted it to read also:
     * for a Pi4
 * BME280 as the original project
 
-{{< dropdown title="Ready with Python?" closed="true" >}}
+
+<details>
+  <summary>Get Python and the env ready to run the Flask Web App 👈</summary>
+  &nbsp;
 
 ```sh
 sudo apt update
@@ -77,6 +80,13 @@ sudo apt install python3.10-venv
 #sudo apt install python3.12-dev
 ```
 
+
+```sh
+git clone https://github.com/JAlcocerT/flask_sensor_display
+#git clone https://github.com/KarolPWr/flask_sensor_display.git
+#git checkout tags/v1.0.0
+```
+
 ```sh
 #python -m venv solvingerror_venv #create the venv
 python3 -m venv flaskwebapp_venv #create the venv
@@ -84,26 +94,27 @@ python3 -m venv flaskwebapp_venv #create the venv
 #solvingerror_venv\Scripts\activate #activate venv (windows)
 source flaskwebapp_venv/bin/activate #(linux)
 ```
-{{< /dropdown >}}
 
 ```sh
-git clone https://github.com/JAlcocerT/flask_sensor_display
-#git clone https://github.com/KarolPWr/flask_sensor_display.git
-#git checkout tags/v1.0.0
 pip3 install -r requirements.txt
 ```
 
+</details>
+
+Tweak the `.env` file with any of the values: `bme280`, `x300` or `pi4` and just:
+
 ```sh
-python3 create_db.py
+#python3 create_db.py
 python3 app.py
 ```
 
-Commented it at [this post](https://jalcocert.github.io/JAlcocerT/web-apps-with-flask/)
+[Alternatively, deploy as per **these instructions** →](https://github.com/JAlcocerT/flask_sensor_display/tree/main/Z_DeployMe)
 
-> Forked from https://github.com/KarolPWr/flask_sensor_display
+Commented the process at [this post](https://jalcocert.github.io/JAlcocerT/web-apps-with-flask/)
+
+> Forked from: https://github.com/KarolPWr/flask_sensor_display
 
 ---
-
 
 # Web interface for Raspberry Pi temperature monitor
 
