@@ -12,11 +12,11 @@
 
 
 <div align="center">
-  <a href="https://github.com/JAlcocerT/Streamlit-MultiChat?tab=GPL-3.0-1-ov-file" style="margin-right: 5px;">
+  <a href="https://github.com/JAlcocerT/flask_sensor_display?tab=GPL-3.0-1-ov-file" style="margin-right: 5px;">
     <img alt="Code License" src="https://img.shields.io/badge/License-GPLv3-blue.svg" />
   </a>
-  <a href="https://github.com/JAlcocerT/Streamlit-MultiChat/actions/workflows/Streamlit_GHA_MultiArch.yml" style="margin-right: 5px;">
-    <img alt="GH Actions Workflow" src="https://github.com/JAlcocerT/Streamlit-MultiChat/actions/workflows/Streamlit_GHA_MultiArch.yml/badge.svg" />
+  <a href="https://github.com/JAlcocerT/flask_sensor_display/blob/main/.github/workflows/Flask_GHA_MultiArch.yml" style="margin-right: 5px;">
+    <img alt="GH Actions Workflow" src="https://github.com/JAlcocerT/flask_sensor_display/blob/main/.github/workflows/Flask_GHA_MultiArch.yml/badge.svg" />
   </a>
 
   <a href="https://www.python.org/downloads/release/python-312">
@@ -26,8 +26,8 @@
 
 <div align="center">
 
-[![GitHub Release](https://img.shields.io/github/release/JAlcocerT/Streamlit-MultiChat/all.svg)](https://github.com/JAlcocerT/Streamlit-MultiChat/releases)
-[![GitHub Release Date](https://img.shields.io/github/release-date-pre/JAlcocerT/Streamlit-MultiChat.svg)](https://github.com/JAlcocerT/Streamlit-MultiChat/releases)
+[![GitHub Release](https://img.shields.io/github/release/JAlcocerT/flask_sensor_display/all.svg)](https://github.com/JAlcocerT/flask_sensor_display/releases)
+[![GitHub Release Date](https://img.shields.io/github/release-date-pre/JAlcocerT/flask_sensor_display.svg)](https://github.com/JAlcocerT/flask_sensor_display/releases)
 
 </div>
 

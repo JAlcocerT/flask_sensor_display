@@ -12,7 +12,7 @@ WORKDIR $APP_HOME
 
 COPY . ./
 
-RUN apt-get update && apt-get install -y lm-sensors \
+RUN apt-get update && apt-get install -y lm-sensors
 #     build-essential \
 #     curl \
 #     software-properties-common \
