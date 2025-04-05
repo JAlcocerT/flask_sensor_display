@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-time CPU Temperature</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        #temperature-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        #temperature {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+        }
+        .unit {
+            font-size: 0.8em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div id="temperature-container">
+        <h1>CPU Temperature</h1>
+        <p id="temperature">--</p>
+        <p class="unit">°C (approximate)</p>
+    </div>
+
+    <script type="text/javascript">
+        console.log("Script started!"); // Added for debugging
+
+        const socket = io({
+            transports: ['websocket'],
+            upgrade: false
+        });
+        const temperatureDiv = document.getElementById('temperature');
+
+        socket.on('connect', function() {
+            console.log('Connected to WebSocket (Forced)');
+        });
+
+        socket.on('cpu_temperature', function(data) {
+            console.log("Received data:", data);
+            temperatureDiv.textContent = data.temperature;
+        });
+
+        socket.on('disconnect', function() {
+            console.log('Disconnected from WebSocket');
+        });
+
+        socket.on('connect_error', (error) => {
+            console.error('Connection Error:', error);
+        });
+
+        socket.on('connect_timeout', (timeout) => {
+            console.error('Connection Timeout:', timeout);
+        });
+    </script>
+</body>
+</html>
