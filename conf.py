@@ -1,6 +1,13 @@
 import pathlib
+import os
+from dotenv import load_dotenv
 
-Sensor = "x300"
+# Load environment variables
+load_dotenv()
+
+Sensor = os.getenv("Platform")
+
+#Sensor = "bme280"
 
 if Sensor =="bme280":
 
@@ -15,7 +22,7 @@ elif Sensor == "x300":
     DBDIR = pathlib.Path(__file__).parent.resolve()
 elif Sensor == "pi4":
     DBNAME = 'pi_sensor_data.db'
-    DB_Table = 'sensor_data'
+    DB_Table = 'pi_sensor_data'
     DBDIR = pathlib.Path(__file__).parent.resolve()    
     
 

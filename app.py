@@ -5,6 +5,12 @@ from flask import Flask, render_template
 import conf
 
 
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
 
 app = Flask(__name__)
 
@@ -55,7 +61,20 @@ def temperature():
 # if __name__ == '__main__':
 #     app.run(host='0.0.0.0', port=9999)
 
-from Sensors.x300.sensor_loger import get_sensor_data, create_table, save_to_db
+platform_type = os.getenv("Platform")
+
+if platform_type == "x300":
+    from Sensors.x300.sensor_loger import get_sensor_data, create_table, save_to_db
+    print("Running on x300 - using x300 sensor functions.")
+elif platform_type == "pi4":
+    from Sensors.RPi4.pi_loger import get_sensor_data, create_table, save_to_db
+    print("Running on Raspberry Pi - using RPi sensor functions.")
+else:
+    print("Unknown platform - sensor data collection will not be active.")
+
+
+# from Sensors.x300.sensor_loger import get_sensor_data, create_table, save_to_db
+# from Sensors.RPi4.pi_loger import get_sensor_data, create_table, save_to_db
 
 import subprocess
 import time

@@ -3,16 +3,16 @@ import sqlite3
 import time
 from datetime import datetime
 
-DATABASE_FILE = 'sensor_data.db'
+DATABASE_FILE = 'pi_sensor_data.db'
 
 def create_table():
-    """Creates the sensor_data table in the SQLite database if it doesn't exist.
+    """Creates the pi_sensor_data table in the SQLite database if it doesn't exist.
     We are pulling TEMPERATURE from the Pi.
     """
     conn = sqlite3.connect(DATABASE_FILE)
     cursor = conn.cursor()
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS sensor_data (
+        CREATE TABLE IF NOT EXISTS pi_sensor_data (
             DATE DATETIME DEFAULT CURRENT_TIMESTAMP,
             TEMPERATURE REAL
         )
@@ -22,7 +22,7 @@ def create_table():
 
 def get_sensor_data():
     """Runs the 'vcgencmd measure_temp' command and parses the output for CPU temperature."""
-    sensor_data = {}
+    pi_sensor_data = {}
     try:
         process = subprocess.run(['vcgencmd', 'measure_temp'], capture_output=True, text=True, check=True)
         output = process.stdout.strip()  # Output: temp=45.6'C
@@ -30,7 +30,7 @@ def get_sensor_data():
         if output.startswith("temp="):
             temp_str = output[5:].replace("'C", "")
             try:
-                sensor_data['TEMPERATURE'] = float(temp_str)
+                pi_sensor_data['TEMPERATURE'] = float(temp_str)
             except ValueError:
                 print(f"Error: Could not parse temperature value: {temp_str}")
                 return None
@@ -44,7 +44,7 @@ def get_sensor_data():
     except FileNotFoundError:
         print("Error: The 'vcgencmd' command was not found. This script is likely for a Raspberry Pi.")
         return None
-    return sensor_data
+    return pi_sensor_data
 
 def save_to_db(data):
     """Saves the sensor data (CPU temperature) to the SQLite database."""
@@ -54,7 +54,7 @@ def save_to_db(data):
     conn = sqlite3.connect(DATABASE_FILE)
     cursor = conn.cursor()
     cursor.execute('''
-        INSERT INTO sensor_data (TEMPERATURE)
+        INSERT INTO pi_sensor_data (TEMPERATURE)
         VALUES (?)
     ''', (data['TEMPERATURE'],))
     conn.commit()
@@ -65,7 +65,7 @@ if __name__ == "__main__":
     create_table()  # Ensure the table exists
 
     while True:
-        sensor_data = get_sensor_data()
-        if sensor_data and 'TEMPERATURE' in sensor_data:
-            save_to_db(sensor_data)
+        pi_sensor_data = get_pi_sensor_data()
+        if pi_sensor_data and 'TEMPERATURE' in pi_sensor_data:
+            save_to_db(pi_sensor_data)
         time.sleep(1)  # Collect data every 1 second
