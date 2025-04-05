@@ -4,6 +4,8 @@ from flask import Flask, render_template
 
 import conf
 
+
+
 app = Flask(__name__)
 
 
@@ -17,10 +19,10 @@ def get_data_by_interval(interval_hours):
     conn = get_db_connection()
 
     if interval_hours is None:
-        data = conn.execute("SELECT * FROM temperature").fetchall()
+        data = conn.execute(f"SELECT DATE, TEMPERATURE FROM {conf.DB_Table}").fetchall()
     else:
         data = conn.execute(
-            "SELECT * FROM temperature WHERE date>datetime('now','localtime', '-%s hours')" % interval_hours).fetchall()
+            f"SELECT DATE, TEMPERATURE FROM {conf.DB_Table} WHERE date>datetime('now','localtime', '-%s hours')" % interval_hours).fetchall()
 
     conn.close()
     return data
@@ -30,7 +32,7 @@ def get_data_by_interval(interval_hours):
 def index():
     """ Display all records from database. Useful for debug purposes. """
     conn = get_db_connection()
-    posts = conn.execute('SELECT * FROM temperature').fetchall()
+    posts = conn.execute(f"SELECT * FROM {conf.DB_Table}").fetchall()
     conn.close()
     return OrderedDict(posts)
 
@@ -50,5 +52,25 @@ def temperature():
                            values=line_temperatures, last_temperature=last_temperature)
 
 
+# if __name__ == '__main__':
+#     app.run(host='0.0.0.0', port=9999)
+
+from Sensors.x300.sensor_loger import get_sensor_data, create_table, save_to_db
+
+import subprocess
+import time
+from threading import Thread
+
+def collect_sensor_data_periodically():
+    create_table()  # Ensure table exists
+    while True:
+        sensor_data = get_sensor_data() # Your sensor reading function
+        if sensor_data:
+            save_to_db(sensor_data) # Your database saving function
+        time.sleep(1) # Collect every 5 seconds
+
 if __name__ == '__main__':
+    # Start the sensor data collection in a background thread
+    sensor_thread = Thread(target=collect_sensor_data_periodically, daemon=True)
+    sensor_thread.start()
     app.run(host='0.0.0.0', port=9999)

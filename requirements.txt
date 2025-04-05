@@ -1,3 +1,5 @@
-bme280==0.6
 Flask==2.1.2
+werkzeug==2.1.2 #https://pypi.org/project/Werkzeug/#history
+
+bme280==0.6
 smbus2==0.4.1

@@ -1,3 +1,108 @@
+<div align="center">
+  <h1>Flask Sensor Display</h1>
+</div>
+
+<div align="center">
+  <h3>Many Sensors - One Flask Web App</h3>
+</div>
+
+<div align="center">
+  <h4>BME280 | x300 | Pi4 </h3>
+</div>
+
+
+<div align="center">
+  <a href="https://github.com/JAlcocerT/Streamlit-MultiChat?tab=GPL-3.0-1-ov-file" style="margin-right: 5px;">
+    <img alt="Code License" src="https://img.shields.io/badge/License-GPLv3-blue.svg" />
+  </a>
+  <a href="https://github.com/JAlcocerT/Streamlit-MultiChat/actions/workflows/Streamlit_GHA_MultiArch.yml" style="margin-right: 5px;">
+    <img alt="GH Actions Workflow" src="https://github.com/JAlcocerT/Streamlit-MultiChat/actions/workflows/Streamlit_GHA_MultiArch.yml/badge.svg" />
+  </a>
+
+  <a href="https://www.python.org/downloads/release/python-312">
+    <img alt="Python Version" src="https://img.shields.io/badge/python-3.12-blue.svg" />
+  </a>
+</div>
+
+<div align="center">
+
+[![GitHub Release](https://img.shields.io/github/release/JAlcocerT/Streamlit-MultiChat/all.svg)](https://github.com/JAlcocerT/Streamlit-MultiChat/releases)
+[![GitHub Release Date](https://img.shields.io/github/release-date-pre/JAlcocerT/Streamlit-MultiChat.svg)](https://github.com/JAlcocerT/Streamlit-MultiChat/releases)
+
+</div>
+
+<p align="center">
+
+  <a href="https://youtube.com/@JAlcocerTech">
+    <img alt="YouTube Channel" src="https://img.shields.io/badge/YouTube-Channel-red" />
+  </a>
+  <a href="https://GitHub.com/JAlcocerT/Docker/graphs/commit-activity" style="margin-right: 5px;">
+    <img alt="Maintained" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
+  </a>
+  <a href="https://github.com/JAlcocerT/Docker">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/JAlcocerT/Docker" />
+  </a>
+  <a href="https://github.com/JAlcocerT/Docker">
+    <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/JAlcocerT/Docker" />
+  </a>
+</p>
+
+Tinkering with IoT and Hardware sensor information in real time with a Flask Web App
+
+
+The original project reads data from a BME280 sensor.
+
+I have adapted it to read also:
+
+* CPU Temperature
+    * for x300
+    * for a Pi4
+* BME280 as the original project
+
+{{< dropdown title="Ready with Python?" closed="true" >}}
+
+```sh
+sudo apt update
+sudo apt install build-essential software-properties-common -y
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+
+sudo apt install python3.11 -y
+```
+
+```sh
+sudo apt install python3-pip
+sudo apt install python3.10-venv
+#apt install python3.12-venv
+#sudo apt install python3.12-dev
+```
+
+```sh
+#python -m venv solvingerror_venv #create the venv
+python3 -m venv flaskwebapp_venv #create the venv
+
+#solvingerror_venv\Scripts\activate #activate venv (windows)
+source flaskwebapp_venv/bin/activate #(linux)
+```
+{{< /dropdown >}}
+
+```sh
+git clone https://github.com/JAlcocerT/flask_sensor_display
+#git clone https://github.com/KarolPWr/flask_sensor_display.git
+#git checkout tags/v1.0.0
+pip3 install -r requirements.txt
+```
+
+```sh
+python3 create_db.py
+python3 app.py
+```
+
+> Forked from https://github.com/KarolPWr/flask_sensor_display
+
+---
+
+
 # Web interface for Raspberry Pi temperature monitor
 
 Software: Flask + Chart.js + SQLite + systemd
