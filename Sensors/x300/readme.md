@@ -23,7 +23,8 @@ sensors | grep "Tctl"
 sensors | grep -E "Tctl|fan2|PPT"
 ```
 
-See the data from the x300:
+See the data from the **x300**:
+
 ```sh
 python3 data.py
 ```

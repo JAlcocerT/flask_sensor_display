@@ -98,6 +98,8 @@ python3 create_db.py
 python3 app.py
 ```
 
+Commented it at [this post](https://jalcocert.github.io/JAlcocerT/web-apps-with-flask/)
+
 > Forked from https://github.com/KarolPWr/flask_sensor_display
 
 ---
