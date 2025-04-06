@@ -9,7 +9,9 @@ python-dotenv==1.0.1
 #for SSE RT Updates
 Flask-SSE
 
-#for websockets
+#for websockets (WS)
 Flask-SocketIO
+gevent
+#pip install gevent
 
 #pip3 install -r requirements.txt

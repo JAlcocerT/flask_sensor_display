@@ -1,0 +1,1 @@
+Using it on this [x13 laptop](https://jalcocert.github.io/JAlcocerT/laptop-lenovo-thinkpad-x13-benchmark/)
